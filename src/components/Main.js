@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import { nanoid } from 'nanoid'
 import CountryGridItem from "./CountryGridItem";
+import styled from 'styled-components'
+
+const MainCont = styled.main`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+`
 
 const url = 'https://restcountries.com/v3.1/all'
 
@@ -19,7 +27,7 @@ export default function Main() {
       const painandsadness = fetchedData.map(item => <CountryGridItem data={item} key={nanoid()} />)
 
     return(
-        <main>
+        <>
             <header>
                 <div className="input-cont">
                     <input type='text' name="country" />
@@ -29,7 +37,7 @@ export default function Main() {
                     <input type='text' name="country" />
                 </div>
             </header>
-            {painandsadness}
-        </main>
+            <MainCont>{painandsadness}</MainCont>
+        </>
         )
 }
